@@ -37,13 +37,12 @@ module.exports = function(grunt) {
         tasks: ["sass"]
       },
       haml: {
-        files: ["templates/**/*.haml"],
+        files: ["views/**/*.haml"],
         tasks: ["haml"]
       }
     },
     concat: {
       options: {
-        // define a string to put between each file in the concatenated output
         separator: ";",
       },
       app: {
