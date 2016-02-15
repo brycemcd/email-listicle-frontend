@@ -37,7 +37,7 @@ module.exports = function(grunt) {
         tasks: ["sass"]
       },
       haml: {
-        files: ["views/**/*.haml"],
+        files: ["templates/**/*.haml"],
         tasks: ["haml"]
       }
     },

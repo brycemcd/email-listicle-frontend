@@ -6,7 +6,7 @@
 
 
   %h1 {{ unreadArticles.length  - articlesRejectedOrAccepted }} Unread Articles
-  .article{ ng_repeat: "article in unreadArticles",
+  .article{ ng_repeat: "article in unreadArticles track by article.id",
     id: "article_{{article.id}}",
     data: {swipable_article: true, article_id: "{{article.id}}"}}
 

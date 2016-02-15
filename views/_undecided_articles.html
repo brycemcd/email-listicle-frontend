@@ -2,11 +2,8 @@
   <div class='swipe-instructions'>
     Swipe left to reject, swipe right to accept article
   </div>
-
   <h1>{{ unreadArticles.length  - articlesRejectedOrAccepted }} Unread Articles</h1>
-
-  <div class='article' data-article-id='{{article.id}}' data-swipable-article id='article_{{article.id}}' ng_repeat='article in unreadArticles track by $index'>
-
+  <div class='article' data-article-id='{{article.id}}' data-swipable-article id='article_{{article.id}}' ng_repeat='article in unreadArticles track by article.id'>
     <div class='accept-reject-article'>
       <button class='accept' name='accept_reject_{{$index}}' ng_click='addRemoveFromList(article.id, true)'>
         Accept
