@@ -1,3 +1,3 @@
 elFrontend.constant("Backend", {
-  host: "http://reading.thedevranch.net/"
+  host: "https://email-listicle.herokuapp.com/"
 });
