@@ -11,6 +11,10 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
     url: "/",
     templateUrl: "/views/_undecided_articles.html",
   })
+  .state("reading", {
+    url: "/reading",
+    templateUrl: "/views/_reading.html",
+  })
   .state("unlabeled", {
     url: "/unlabeled",
     templateUrl: "/views/_cards_parent.html",
@@ -58,13 +62,13 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
   });
 });
 ;elFrontend.constant("Backend", {
-  host: "http://10.1.2.230:4001"
+  host: "http://localhost:9393"
+  //host: "https://email-listicle.herokuapp.com/"
 });
 ;elFrontend.factory("Article", function($http, Backend) {
   var host = Backend.host;
   var httpConf = {timeout: 3000};
   var allUndecided = function() {
-    //return $http.get("https://email-listicle.herokuapp.com/api/v1/email_links/all");
     return $http.get(host + "/api/v1/email_links/all");
   };
 
@@ -86,6 +90,10 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
 
   var allUnread = function() {
     return $http.get(host + "/api/v1/cards/unread");
+  };
+
+  var allReading  = function() {
+    return $http.get(host + "/api/v1/cards/reading");
   };
 
   var applyLabelToCard = function(cardId, labelColor) {
@@ -112,6 +120,7 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
     allUndecided: allUndecided,
     allUnlabeled: allUnlabeled,
     allUnread: allUnread,
+    allReading: allReading,
     addToReadingList: addToReadingList,
     rejectFromReadingList: rejectFromReadingList,
     applyLabelToCard: applyLabelToCard,
@@ -263,7 +272,24 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
     }
   };
 });
-;elFrontend.controller("showUnread", function($scope, $timeout, Article) {
+;elFrontend.controller("showReading", function($scope, $timeout, Article) {
+  $scope.title = "Foo BAR";
+  $scope.cards = [];
+
+  $scope.fetchArticles = function() {
+    Article.allReading().then(
+      //success
+      function(resp) {
+        $scope.cards = resp.data;
+      },
+      // failure
+      function(data) {
+      }
+    );
+  };
+});
+
+elFrontend.controller("showUnread", function($scope, $timeout, Article) {
   $scope.unreadArticles = [];
   $scope.articlesRejectedOrAccepted = 0;
 

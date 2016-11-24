@@ -1,3 +1,20 @@
+elFrontend.controller("showReading", function($scope, $timeout, Article) {
+  $scope.title = "Foo BAR";
+  $scope.cards = [];
+
+  $scope.fetchArticles = function() {
+    Article.allReading().then(
+      //success
+      function(resp) {
+        $scope.cards = resp.data;
+      },
+      // failure
+      function(data) {
+      }
+    );
+  };
+});
+
 elFrontend.controller("showUnread", function($scope, $timeout, Article) {
   $scope.unreadArticles = [];
   $scope.articlesRejectedOrAccepted = 0;

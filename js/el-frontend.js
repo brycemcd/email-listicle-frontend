@@ -11,6 +11,10 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
     url: "/",
     templateUrl: "/views/_undecided_articles.html",
   })
+  .state("reading", {
+    url: "/reading",
+    templateUrl: "/views/_reading.html",
+  })
   .state("unlabeled", {
     url: "/unlabeled",
     templateUrl: "/views/_cards_parent.html",

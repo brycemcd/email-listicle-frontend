@@ -1,0 +1,6 @@
+<section id='cards_article-list' ng-controller='showReading' ng-init='fetchArticles()'>
+  <h1>{{ cards.length }} Articles Being Read</h1>
+  <div class='cards' id='reading'>
+    <card data-card='card' id='{{card.id}}' ng_class='card.labels[0].color' ng_repeat='card in cards'></card>
+  </div>
+</section>

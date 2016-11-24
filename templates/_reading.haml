@@ -1,0 +1,10 @@
+%section#cards{"ng-controller" => "showReading", id: "article-list",
+  "ng-init" => "fetchArticles()"}
+
+  %h1 {{ cards.length }} Articles Being Read
+
+  #reading.cards
+    %card{ng_repeat: "card in cards", ng_class: "card.labels[0].color",
+      id: "{{card.id}}", data: {card: "card"}}
+
+

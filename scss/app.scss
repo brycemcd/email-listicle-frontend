@@ -49,6 +49,10 @@ nav {
   }
 }
 
+h1 {
+  text-align: center;
+}
+
 section#main {
   @include outer-container;
   margin: 20px auto;
@@ -63,10 +67,6 @@ section#main {
   @include media($mobile) {
     width: 95%;
     max-width: 320px;
-  }
-
-  h1 {
-    text-align: center;
   }
 
   .swipe-instructions {
@@ -172,56 +172,67 @@ section#main {
     @include span-columns(12);
     text-align: center;
   }
+}
+.cards {
+  @include outer-container;
+  @include span-columns(12);
+  @include flex-display(flex);
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  @include justify-content(space-around);
+  @include align-items(stetch);
 
-  .cards {
-    @include outer-container;
-    @include span-columns(12);
-    @include flex-display(flex);
-    @include flex-direction(row);
-    @include flex-wrap(wrap);
-    @include justify-content(space-around);
-    @include align-items(stetch);
+  card {
+    margin-right: 10px;
+    margin-bottom: 15px;
+    padding: 14px;
+    width: 240px;
+    box-shadow: 0px 5px 10px #EEEEEE;
 
-    card {
-      margin-right: 10px;
-      margin-bottom: 15px;
-      padding: 14px;
-      width: 240px;
-      box-shadow: 0px 5px 10px #EEEEEE;
-
-      &.doing {
-        opacity: 0.7;
-      }
-
-      &.green {
-        border-top: 3px solid #52A74F;
-      }
-
-      &.orange {
-        border-top: 3px solid #FF7200;
-      }
-
-      &.yellow {
-        border-top: 3px solid #FEDF83;
-      }
-
-      h2 {
-        text-align: center;
-      }
-
-      li a {
-        @include button;
-        margin: 5px 0;
-        border: none;
-      }
-
-      .card-color {
-        @include span-columns(12);
-        margin-bottom: 5px;
-        min-height: 50px;
-        text-align: center;
-        color: #333333;
-      }
+    &.doing {
+      opacity: 0.7;
     }
+
+    &.green {
+      border-top: 3px solid #52A74F;
+    }
+
+    &.orange {
+      border-top: 3px solid #FF7200;
+    }
+
+    &.yellow {
+      border-top: 3px solid #FEDF83;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    li a {
+      @include button;
+      margin: 5px 0;
+      border: none;
+    }
+
+    .card-color {
+      @include span-columns(12);
+      margin-bottom: 5px;
+      min-height: 50px;
+      text-align: center;
+      color: #333333;
+    }
+  }
+}
+
+.move-to-done { display: none; }
+
+#reading {
+  .move-to-done {
+    display: block;
+  }
+
+  .move-to-doing {
+    display: none;
   }
 }

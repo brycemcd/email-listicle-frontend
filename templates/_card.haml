@@ -20,5 +20,7 @@
     %a.trello{ng_href: "{{ card.shortUrl }}", target: "_blank"} View On Trello
   %li{ng_show: "card.labels.length > 0"}
     %a.archive{ng_href: "nothing", data: {archive_card: true, id: "{{card.id}}" }} Archive
-  %li{ng_show: "card.labels.length > 0"}
+  %li.move-to-doing{ng_show: "card.labels.length > 0"}
     %a.doing{data: {move_to_doing: true, id: "{{card.id}}"}} Move To Doing
+  %li.move-to-done
+    %a.done{data: {move_to_done: true, id: "{{card.id}}"}} Move To Done

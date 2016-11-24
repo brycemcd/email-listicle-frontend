@@ -2,7 +2,6 @@ elFrontend.factory("Article", function($http, Backend) {
   var host = Backend.host;
   var httpConf = {timeout: 3000};
   var allUndecided = function() {
-    //return $http.get("https://email-listicle.herokuapp.com/api/v1/email_links/all");
     return $http.get(host + "/api/v1/email_links/all");
   };
 
@@ -24,6 +23,10 @@ elFrontend.factory("Article", function($http, Backend) {
 
   var allUnread = function() {
     return $http.get(host + "/api/v1/cards/unread");
+  };
+
+  var allReading  = function() {
+    return $http.get(host + "/api/v1/cards/reading");
   };
 
   var applyLabelToCard = function(cardId, labelColor) {
@@ -50,6 +53,7 @@ elFrontend.factory("Article", function($http, Backend) {
     allUndecided: allUndecided,
     allUnlabeled: allUnlabeled,
     allUnread: allUnread,
+    allReading: allReading,
     addToReadingList: addToReadingList,
     rejectFromReadingList: rejectFromReadingList,
     applyLabelToCard: applyLabelToCard,

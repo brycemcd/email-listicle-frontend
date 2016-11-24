@@ -1,3 +1,4 @@
 elFrontend.constant("Backend", {
-  host: "http://10.1.2.230:4001"
+  host: "http://localhost:9393"
+  //host: "https://email-listicle.herokuapp.com/"
 });

@@ -21,7 +21,10 @@
   <li ng_show='card.labels.length &gt; 0'>
     <a class='archive' data-archive-card data-id='{{card.id}}' ng_href='nothing'>Archive</a>
   </li>
-  <li ng_show='card.labels.length &gt; 0'>
+  <li class='move-to-doing' ng_show='card.labels.length &gt; 0'>
     <a class='doing' data-id='{{card.id}}' data-move-to-doing>Move To Doing</a>
+  </li>
+  <li class='move-to-done'>
+    <a class='done' data-id='{{card.id}}' data-move-to-done>Move To Done</a>
   </li>
 </ul>
