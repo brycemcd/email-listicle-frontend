@@ -225,10 +225,30 @@ section#main {
   }
 }
 
+.label {
+  &.green {
+    background-color: #52A74F;
+  }
+
+  &.orange {
+    background-color: #FF7200;
+  }
+
+  &.yellow {
+    background-color: #FEDF83;
+  }
+
+}
+
 .move-to-done { display: none; }
+.upvote-card { display: none; }
 
 #reading {
   .move-to-done {
+    display: block;
+  }
+
+  .upvote-card {
     display: block;
   }
 

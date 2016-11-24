@@ -1,7 +1,6 @@
 elFrontend.directive("archiveCard", function(Article) {
   var cardId = "";
   var archiveSuccess = function(data) {
-    console.log("success!");
     $("#" + cardId).css("background-color", "red");
   };
 

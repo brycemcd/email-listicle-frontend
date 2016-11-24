@@ -62,8 +62,8 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
   });
 });
 ;elFrontend.constant("Backend", {
-  host: "http://localhost:9393"
-  //host: "https://email-listicle.herokuapp.com/"
+  //host: "http://localhost:9393"
+  host: "https://email-listicle.herokuapp.com/"
 });
 ;elFrontend.factory("Article", function($http, Backend) {
   var host = Backend.host;
@@ -116,6 +116,11 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
                      {"card_id": cardId});
   };
 
+  var upvoteCard = function(cardId) {
+    return $http.put(host + "/api/v1/cards/upvote_card",
+                     {"card_id": cardId});
+  };
+
   return {
     allUndecided: allUndecided,
     allUnlabeled: allUnlabeled,
@@ -126,7 +131,8 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
     applyLabelToCard: applyLabelToCard,
     archiveCard: archiveCard,
     moveToDoing: moveToDoing,
-    moveToDone: moveToDone
+    moveToDone: moveToDone,
+    upvoteCard: upvoteCard
   };
 });
 ;elFrontend.directive("swipableArticle", function(Article) {
@@ -149,7 +155,6 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
 ;elFrontend.directive("archiveCard", function(Article) {
   var cardId = "";
   var archiveSuccess = function(data) {
-    console.log("success!");
     $("#" + cardId).css("background-color", "red");
   };
 
@@ -272,8 +277,27 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
     }
   };
 });
+;elFrontend.directive("upvoteCard", function(Article) {
+  var voteSuccess = function(data) {
+    $("#" + cardId).css("background-color", "green");
+  };
+
+  var voteFail = function(resp) {
+
+  };
+
+  return {
+    restrict: "A",
+    link: function(scope, elem, attrs) {
+      elem.bind("click", function(evt) {
+        evt.preventDefault();
+        cardId = attrs.id;
+        Article.upvoteCard(attrs.id).then(voteSuccess, voteFail);
+      });
+    }
+  };
+});
 ;elFrontend.controller("showReading", function($scope, $timeout, Article) {
-  $scope.title = "Foo BAR";
   $scope.cards = [];
 
   $scope.fetchArticles = function() {
@@ -288,8 +312,7 @@ elFrontend.config(function($stateProvider, $urlRouterProvider,
     );
   };
 });
-
-elFrontend.controller("showUnread", function($scope, $timeout, Article) {
+;elFrontend.controller("showUnread", function($scope, $timeout, Article) {
   $scope.unreadArticles = [];
   $scope.articlesRejectedOrAccepted = 0;
 

@@ -49,6 +49,11 @@ elFrontend.factory("Article", function($http, Backend) {
                      {"card_id": cardId});
   };
 
+  var upvoteCard = function(cardId) {
+    return $http.put(host + "/api/v1/cards/upvote_card",
+                     {"card_id": cardId});
+  };
+
   return {
     allUndecided: allUndecided,
     allUnlabeled: allUnlabeled,
@@ -59,6 +64,7 @@ elFrontend.factory("Article", function($http, Backend) {
     applyLabelToCard: applyLabelToCard,
     archiveCard: archiveCard,
     moveToDoing: moveToDoing,
-    moveToDone: moveToDone
+    moveToDone: moveToDone,
+    upvoteCard: upvoteCard
   };
 });

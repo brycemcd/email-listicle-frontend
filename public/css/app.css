@@ -505,10 +505,25 @@ section#main {
       .cards card .card-color:last-child {
         margin-right: 0; }
 
+.label.green {
+  background-color: #52A74F; }
+
+.label.orange {
+  background-color: #FF7200; }
+
+.label.yellow {
+  background-color: #FEDF83; }
+
 .move-to-done {
   display: none; }
 
+.upvote-card {
+  display: none; }
+
 #reading .move-to-done {
+  display: block; }
+
+#reading .upvote-card {
   display: block; }
 
 #reading .move-to-doing {
