@@ -11,6 +11,10 @@
     {{ label.name }}
   </li>
 </ul>
+<section class='meta'>
+  last action: {{card.dateLastActivity | date }}
+</section>
+<hr>
 <ul class='links'>
   <li>
     <a class='article' ng_href='{{ card.attachments[0].url }}' target='_blank'>Read Article</a>

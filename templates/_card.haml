@@ -13,6 +13,11 @@
   %li.label{ng_repeat: "label in card.labels", ng_class: "label.color"}
     {{ label.name }}
 
+%section.meta
+  last action: {{card.dateLastActivity | date }}
+
+%hr
+
 %ul.links
   %li
     %a.article{ng_href: "{{ card.attachments[0].url }}", target: "_blank"} Read Article
