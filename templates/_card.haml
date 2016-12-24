@@ -1,35 +1,28 @@
-%h2
-  {{card.name}}
+%section.trello
+  %a.archive{ng_href: "nothing", data: {archive_card: true, id: "{{card.id}}" }} X
+  %a#view-trello{ng_href: "{{ card.shortUrl }}", target: "_blank"} View On Trello
 
-.label-choices{ng_show: "card.labels.length === 0"}
-  %a.card-color{ng_repeat: "color in cardLabels",
-    style: "background-color: {{color.hex}}",
-    data: { card_id: "{{card.id}}",
-            label_color: "{{color.color}}",
-            color_selector: true}}
-    {{color.name}}
+%section.card-actions
+  %h2
+    {{card.name}}
 
-%ul.links
-  %li
-    %a.article{ng_href: "{{ card.attachments[0].url }}", target: "_blank"} Read Article
-  %li.move-to-done
-    %a.done{data: {move_to_done: true, id: "{{card.id}}"}} Move To Done
-  %li.move-to-doing{ng_show: "card.labels.length > 0"}
-    %a.doing{data: {move_to_doing: true, id: "{{card.id}}"}} Move To Reading
-  %li.upvote-card
-    %a.done{data: {upvote_card: true, id: "{{card.id}}"}} Upvote
-  %li{ng_show: "card.labels.length > 0"}
-    %a.archive{ng_href: "nothing", data: {archive_card: true, id: "{{card.id}}" }} Archive
-  %li
-    %a.trello{ng_href: "{{ card.shortUrl }}", target: "_blank"} View On Trello
+  .label-choices{ng_show: "card.labels.length === 0"}
+    %a.card-color{ng_repeat: "color in cardLabels",
+      style: "background-color: {{color.hex}}",
+      data: { card_id: "{{card.id}}",
+              label_color: "{{color.color}}",
+              color_selector: true}}
+      {{color.name}}
 
-%hr
-
-%ul.labels
-  %li.label{ng_repeat: "label in card.labels", class: "{{label.color}}"}
-    {{ label.name }}
+  %ul.links
+    %li
+      %a.article{ng_href: "{{ card.attachments[0].url }}", target: "_blank"} Read Article
+    %li.move-to-doing{ng_show: "card.labels.length > 0"}
+      %a.doing{data: {move_to_doing: true, id: "{{card.id}}"}} Move To Reading
+    %li.move-to-done
+      %a.done{data: {move_to_done: true, id: "{{card.id}}"}} Move To Done
+    %li.upvote-card
+      %a.done{data: {upvote_card: true, id: "{{card.id}}"}} Upvote
 
 %section.meta
   last action: {{card.dateLastActivity | date }}
-
-%hr

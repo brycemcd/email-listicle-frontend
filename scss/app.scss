@@ -222,7 +222,38 @@ section#main {
       text-align: center;
       color: #333333;
     }
+    section.meta {
+      border-top: 1px dotted grey;
+      border-bottom: 1px dotted grey;
+      padding: 5px 0;
+      font-size: small;
+    }
+
+    section.trello {
+      float: left;
+      width: 100%;
+      margin-bottom: 10px;
+
+      a {
+        display: inline-block;
+        font-size: small;
+        color: grey;
+      }
+      .archive {
+        float: left;
+        width: 20%;
+      }
+      #view-trello {
+        float: right;
+        text-align: right;
+        width: 75%;
+      }
+    }
   }
+}
+
+.card-actions {
+  clear: both;
 }
 
 .label {
