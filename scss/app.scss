@@ -3,7 +3,7 @@
 @import "base/base";
 @import "progress_bar";
 
-$mobile:  new-breakpoint(max-width 769px 12);
+$mobile:  new-breakpoint(max-width 767px 12);
 
 @mixin flex-display($value) {
   @if $value == "flex" {
@@ -265,6 +265,23 @@ section#main {
 
 .card-actions {
   clear: both;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 185px;
+
+  h2 {
+    order: 1;
+    flex-grow: 1;
+  }
+
+  .links {
+    order: 2;
+  }
+
+  .meta {
+    order: 3;
+  }
 }
 
 .label {
