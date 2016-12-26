@@ -232,16 +232,28 @@ nav {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  margin: 20px auto;
-  text-align: center; }
+  max-width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
   nav::after {
     clear: both;
     content: "";
     display: table; }
+  @media screen and (max-width: 767px) {
+    nav {
+      /*flex-flow: row wrap;*/
+      flex-direction: column; } }
   nav a {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     padding: 10px 20px;
-    font-size: small; }
+    margin: 2px;
+    font-size: small;
+    border: 1px solid blue;
+    text-align: center; }
 
 h1 {
   text-align: center; }
@@ -267,13 +279,13 @@ section#main {
     clear: both;
     content: "";
     display: table; }
-  @media screen and (max-width: 769px) {
+  @media screen and (max-width: 767px) {
     #article-list {
       width: 95%;
       max-width: 320px; } }
   #article-list .swipe-instructions {
     display: none; }
-    @media screen and (max-width: 769px) {
+    @media screen and (max-width: 767px) {
       #article-list .swipe-instructions {
         display: block; } }
   #article-list .add-reject-confirmation {
@@ -313,7 +325,7 @@ section#main {
         clear: both;
         content: "";
         display: table; }
-      @media screen and (max-width: 769px) {
+      @media screen and (max-width: 767px) {
         #article-list .article .accept-reject-article {
           display: none; } }
       #article-list .article .accept-reject-article button {
@@ -350,7 +362,7 @@ section#main {
         text-align: right; }
         #article-list .article .article-details .created_at:last-child {
           margin-right: 0; }
-        @media screen and (max-width: 769px) {
+        @media screen and (max-width: 767px) {
           #article-list .article .article-details .created_at {
             float: left;
             display: block;
@@ -366,7 +378,7 @@ section#main {
         width: 82.9403914003%; }
         #article-list .article .article-details .subject:last-child {
           margin-right: 0; }
-        @media screen and (max-width: 769px) {
+        @media screen and (max-width: 767px) {
           #article-list .article .article-details .subject {
             float: left;
             display: block;
@@ -504,6 +516,40 @@ section#main {
       color: #333333; }
       .cards card .card-color:last-child {
         margin-right: 0; }
+    .cards card section.meta {
+      border-top: 1px dotted grey;
+      border-bottom: 1px dotted grey;
+      padding: 5px 0;
+      font-size: small; }
+    .cards card section.trello {
+      float: left;
+      width: 100%;
+      margin-bottom: 10px; }
+      .cards card section.trello a {
+        display: inline-block;
+        font-size: small;
+        color: grey; }
+      .cards card section.trello .archive {
+        float: left;
+        width: 20%; }
+      .cards card section.trello #view-trello {
+        float: right;
+        text-align: right;
+        width: 75%; }
+
+.card-actions {
+  clear: both;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 185px; }
+  .card-actions h2 {
+    order: 1;
+    flex-grow: 1; }
+  .card-actions .links {
+    order: 2; }
+  .card-actions .meta {
+    order: 3; }
 
 .label.green {
   background-color: #52A74F; }
