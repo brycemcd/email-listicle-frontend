@@ -39,13 +39,24 @@ $mobile:  new-breakpoint(max-width 769px 12);
 
 nav {
   @include outer-container;
-  width: 50%;
-  margin: 20px auto;
-  text-align: center;
+  max-width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @include media($mobile) {
+    /*flex-flow: row wrap;*/
+    flex-direction: column;
+  }
 
   a {
+    @include border-top-radius(5px);
+    @include border-bottom-radius(5px);
     padding: 10px 20px;
+    margin: 2px;
     font-size: small;
+    border: 1px solid blue;
+    text-align: center;
   }
 }
 
