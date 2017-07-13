@@ -1,3 +1,3 @@
 elFrontend.constant("Backend", {
-  host: "http://reading.thedevranch.net"
+  host: "https://reading.thedevranch.net"
 });
